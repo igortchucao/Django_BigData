@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'enadeSe.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'enade',
+        'NAME': 'login_senha',
         'HOST': 'localhost',
-        'PORT': '3307',
-        'USER': 'trotta',
-        'PASSWORD': '3.141592',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': 'Tt132301',
     }
 }
 
