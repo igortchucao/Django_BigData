@@ -1,0 +1,96 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static "/css/bootstrap.min.css" %}">
+  <link rel="stylesheet" href="{% static "/css/all.css" %}">
+  <title>RECOMENDE</title>
+
+  <style>
+    /*
+- Como Fazer Uma Imagem de Fundo Preencher Toda a Tela
+- Autor: Guilherme Müller
+- Site: http://guilhermemuller.com.br/blog/2011/06/08/como-fazer-uma-imagem-de-fundo-preencher-a-tela-inteira/
+*/
+
+    /* reset de margens */
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* para garantir que estes elementos ocuparão toda a tela */
+    body,
+    html {
+      width: 100%;
+      height: 100%;
+      font-family: Arial, Tahoma, sans-serif;
+    }
+
+    body {
+      /*background: url(https://hdwallpaper20.com/wp-content/uploads/2017/08/made-it-just-for-YOU-It-s-huge-x1080-Download-it-here-wallpaper-wp2007732.jpg) center center no-repeat fixed;
+*/
+      background: url("{% static "/imgs/jornalBack.jpg" %}") center center no-repeat fixed;
+
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+    #site {
+      width: 1100px;
+      padding: 50px;
+      margin: 100px auto;
+      background: #FFF;
+      /* fundo branco para navegadores que não suportam rgba */
+      background: rgba(255, 255, 255, 0.8);
+      /* fundo branco com um pouco de transparência */
+    }
+
+    p {
+      margin-bottom: 1.5em;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFF;">
+    <a class="navbar-brand" href="#">
+      <img src="{% static "/imgs/25aad6fb-e198-4657-ac18-60b8cd1342e6_200x200.png" %}" width="60S" height="45" alt="">
+    </a>
+    <ul class="navbar-nav">
+      <li class="nav-item badge badge-pill badge-primary" style="background-color: #FFF;">
+        <a class="nav-link" href="/home/">Home</a>
+      </li>
+      <li class="nav-item badge badge-pill badge-primary" style="background-color: #FFF;">
+        <a class="nav-link" href="/sobre/">Sobre</a>
+      </li>
+    </ul>
+  </nav>
+  <div id="site">
+    <div class="card fixed-center" style="width: 62.5rem;">
+
+      <div class="card-body">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="{% static "/js/jquery-3.4.1.min.js" %}"></script>
+  <!-- <script src="{% static "/js/popper.min.js" %}"></script> -->
+  <script src="{% static "/js/bootstrap.min.js" %}"></script>
+</body>
+
+</html>

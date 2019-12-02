@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container mt-2">
+
+  <div class="row">
+    <div class="col-4">
+      <h2><b>Crie sua prova</b></h2>
+      <p>Escolha a área desejada e gere sua prova:
+      </p>
+      <form action="{% url 'geraprova' %}" method="get">
+      <!-- <form action="#" method="POST"> -->
+        <select name="areas" id="areas" class="custom-select custom-select-sm mb-3">
+          <option selected>Área</option>
+          {% for a in areas %}
+          <option value="{{a.areanome}}">{{a.areanome}}</option>
+          {% endfor %}
+        </select>
+        <select name="downloads" id="downloads" class="custom-select custom-select-sm mb-3">
+          <option selected>Downloads</option>
+          <option value="pdf">PDF</option>
+          <option value="gabarito">Gabarito</option>
+          <option value="ambos">Ambos</option>
+          <option value="nenhum">Nenhum</option>
+        </select>
+        <input type="submit" value="Gerar prova">
+      </form>
+    </div>
+    <div class="col-8">
+
+    </div>
+  </div>
+</div>
+{% endblock %}

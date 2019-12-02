@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+<body class="bg-light">
+  <div class="container">
+    <div class="py-5 text-center">
+      <img src="{% static "/imgs/imagemMenu.png" %}" width="520" height="150" style="margin-bottom: 4%;" alt="">
+      <p class="lead">Aqui você pode fazer pesquisas relacionadas aos dados que estão no banco de dados.</p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">#trandtops</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">#hashtags</h6>
+              <small class="text-muted">Area</small>
+            </div>
+            <span class="text-muted">999</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">#hashtags</h6>
+              <small class="text-muted">Area</small>
+            </div>
+            <span class="text-muted">999</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">#hashtags</h6>
+              <small class="text-muted">Area</small>
+            </div>
+            <span class="text-muted">999</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between bg-light">
+            <div class="text-success">
+              <h6 class="my-0">#hashtags</h6>
+              <small class="text-muted">Area</small>
+            </div>
+            <span class="text-success">999</span>
+          </li>
+        </ul>
+
+        <form class="card p-2">
+          <div class="input-group">
+            <input class="form-control" type="text" placeholder="Pesquisar hashtag">
+            <div class="input-group-append">
+              <button class="btn btn-secondary" type="submit">Pesquisar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">Pesquisar Avançadas e Manipulação de Dados</h4>
+        <form class="needs-validation" novalidate="">
+          <div class="row">
+            <div class="col-md-12 mb-3">
+              <form>
+                <div class="form-group">
+                  <label for="formGroupExampleInput">Pesquisar</label>
+                  <input type="text" class="form-control" id="formGroupExampleInput"
+                    placeholder="Digite aqui sua pesquisa...">
+                </div>
+              </form>
+            </div>
+
+          </div>
+
+          <div class="mb-3">
+            <form>
+              <div class="form-group">
+                <label for="formControlRange">Sentimento</label>
+                <input type="range" class="form-control-range" id="formControlRange">
+              </div>
+            </form>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="country">Tema</label>
+              <select class="custom-select d-block w-100" id="country" required="">
+                <option value="">Escolha...</option>
+                <option>Política</option>
+                <option>Esporte</option>
+              </select>
+              <div class="invalid-feedback">
+                Por Favor, escolha uma área
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="state">Ordem</label>
+              <select class="custom-select d-block w-100" id="state" required="">
+                <option value="">Escolha...</option>
+                <option>Mais Comentada</option>
+                <option>Menos Comentada</option>
+              </select>
+              <div class="invalid-feedback">
+                Por Favor, escolha uma ordem
+              </div>
+            </div>
+
+          </div>
+          <hr class="mb-4">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" id="same-address" type="checkbox">
+            <label class="custom-control-label" for="same-address">Gerar Gráfico</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" id="save-info" type="checkbox">
+            <label class="custom-control-label" for="save-info">Gerar Relatório</label>
+          </div>
+          <hr class="mb-4">
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <form>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Email para recebr o Relatório</label>
+                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 mb-3">
+              <label for="cc-expiration">Nome</label>
+              <input class="form-control" id="cc-expiration" required="" type="text" placeholder="">
+              <div class="invalid-feedback">
+                Digite um Nome
+              </div>
+            </div>
+
+          </div>
+          <hr class="mb-4">
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Pesquisar</button>
+        </form>
+      </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">© 2019 Visinha Velha</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"></script>
+  <script>
+    window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
+  </script>
+  <script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"
+    integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"></script>
+  <script src="form-validation.js"></script>
+
+</body>
+{% endblock %}

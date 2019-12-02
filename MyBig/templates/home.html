@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-4"></div>
+  <div class="col-md-5">
+    <img src="{% static "/imgs/25aad6fb-e198-4657-ac18-60b8cd1342e6_200x200.png" %}" style="width: 70%; "
+      class="card-img-top" alt="">
+  </div>
+
+</div>
+
+<div class="card-body">
+
+  <form>
+    <div class="form-group">
+      <label for="formGroupExampleInput"></label>
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite aqui sua Pesquisa ...">
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-md-3 mb-7">
+      <div class="d-flex" style="margin-top: 1.8%;">
+        <select class="custom-select d-block w-100" id="country" required="">
+          <option value="">Escolha um Tema...</option>
+          <option>Política</option>
+          <option>Esporte</option>
+        </select>
+        <div class="invalid-feedback">
+          Por Favor, escolha uma área
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button type="button" class="btn btn-secondary btn-lg btn-block">PESQUISAR</button>
+
+</div>
+
+</div>
+
+
+{% endblock %}
