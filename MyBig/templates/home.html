@@ -6,7 +6,21 @@
   <div class="col-md-12 order-md-2 mb-4">
     <ul class="list-group" style="height: 10cm; width: max-content;">
       <div id="list-example" class="list-group" style="overflow-y: scroll; width: max-content; position: relative;">
-        <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
+        {% for q in test %}
+        <a class="list-group-item list-group-item-action" href="#list-item-1">
+          <div class="row">
+            <div class="col-md-4 order-md-2 mb-4">
+              <img class="img-fluid" src="/static/imgs/{{ q.foto }}.jpg" style="width: 50%;" alt="...">
+            </div>
+            <div class="col-md-6 order-md-2 mb-4">
+              <h1>{{ q.nome }} <span class="badge badge-secondary">5</span></h1>
+              <h6>Data de Inserção: {{ q.data_insercao }}</h6>
+              <h6>Data de Manutenção: {{ q.data_manutencao }}</h6>
+              <h6>Data de Reposição: {{ q.data_reposicao }}</h6>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
         <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
         <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
         <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>

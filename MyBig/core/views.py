@@ -26,9 +26,11 @@ def home(request):
     download = request.GET.get('downloads')
     question = Questao.objects.filter(areanome = area)
     question2 = question[:20]'''
-    return render(request, 'home.html') 
+    ferramentas = [ChaveFenda(),ChaveFenda()]
+    return render(request, 'home.html', {'test' : ferramentas}) 
 
 def dados(request):
+    
     return render(request, 'dados.html')
 
 def sobre(request):
