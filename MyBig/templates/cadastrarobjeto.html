@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container mt-2">
+
+  <div class="row">
+    <div class="col-12">
+      <h2><b>Cadastre um Objeto</b></h2>
+      <form action="{% url 'cadastrarobjeto' %}" method="get">
+        <!-- <form action="#" method="POST"> -->
+        <div class="form-group">
+          <label for="formGroupExampleInput">Nome</label>
+          <input style="margin-bottom: 1cm;" name="nome" id="nome" class="form-control" placeholder="Nome da Ferramenta"></input>
+
+          <label for="formGroupExampleInput">Data de Inserção</label>
+          <input type="date" style="margin-bottom: 1cm;" name="dataInser" id="dataInser" class="form-control" placeholder="Data de Inserção"></input>
+
+          <label for="formGroupExampleInput">Data de Manutenção</label>
+          <input type="date" style="margin-bottom: 1cm;" name="dataManu" id="dataManu" class="form-control" placeholder="Nome da Ferramenta"></input>
+
+          <label for="formGroupExampleInput">Data de reposição</label>
+          <input type="date" style="margin-bottom: 1cm;" name="dataRep" id="dataRep" class="form-control" placeholder="Nome da Ferramenta"></input>
+
+          <label for="formGroupExampleInput">Quantidade</label>
+          <input style="margin-bottom: 1cm;" name="qnt" id="qnt" class="form-control" placeholder="Quantos objetos esta inserindo"></input>
+
+          <label for="formGroupExampleInput">Imagem</label>
+          <input style="margin-bottom: 1cm;" name="foto" id="foto" class="form-control" placeholder="Use imagens jpg"></input>
+        </div>
+        <input type="submit" value="Cadastrar">
+      </form>
+    </div>
+    <div class="col-8">
+
+    </div>
+  </div>
+</div>
+{% endblock %}

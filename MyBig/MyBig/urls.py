@@ -29,9 +29,13 @@ from . import settings
 urlpatterns = [
 
     path('admin/', admin.site.urls),
-
-    path('home/', views.home),
+    path('cadastrar/', views.cadastrar, name='cadastrarobjeto'),
+    path('home/', views.home, name='home'),
     path('dados/', views.dados),
     path('sobre/', views.sobre),
 
 ]
+
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_ROOT, document_root =settings.MEDIA_ROOT)

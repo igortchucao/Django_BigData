@@ -1,18 +1,11 @@
 from django.db import models
 
 # CRIE AQUI AS FERRAMENTAS. BASTA MUDAR OS DADOS DO OBJETO 
-class ChaveFenda:
-    def __init__(self):
-        self.nome = "Chave de Fenda"
-        self.data_insercao = "25/12/2009"
-        self.data_manutencao = "não há manutenção"
-        self.data_reposicao = "25/12/2019"
-        self.foto = "chave_de_fenda"
-
-class ChaveBoca:
-    def __init__(self):
-        self.nome = "Chave de Boca"
-        self.data_insercao = "25/12/2009"
-        self.data_manutencao = "não há manutenção"
-        self.data_reposicao = "25/12/2019"
-        self.foto = "chave_de_fenda"
+class Ferramenta:
+    def __init__(self, nome, data_insercao, data_manutencao, data_reposicao, qnt, foto):
+        self.nome = nome
+        self.data_insercao = data_insercao
+        self.data_manutencao = data_manutencao
+        self.data_reposicao = data_reposicao
+        self.qnt = qnt
+        self.foto = foto
