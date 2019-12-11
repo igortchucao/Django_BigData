@@ -1,2 +1,2 @@
 # Django_BigData
-Um crawler para grandes quantidades de dados. Todos armazenados em um banco de dados e uma aplicação Web. 
+Para fazer o teste da aplicação é ir a pasta principal e digitar "python ./manage.py runserver"
