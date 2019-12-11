@@ -1,4 +1,3 @@
 from django.contrib import admin
 
-admin.site.site_header = 'Página do Administrador'
-
+# Register your models here.

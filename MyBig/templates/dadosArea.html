@@ -48,22 +48,22 @@
   function drawVisualization() {
     // Some raw data (not necessarily accurate)
     var data = google.visualization.arrayToDataTable([
-      ['EMPRESA', '{{ top10p.0.nome }}', '{{ top10p.1.nome }}', '{{ top10p.2.nome }}', '{{ top10p.3.nome }}',
-        '{{ top10p.4.nome }}', '{{ top10p.5.nome }}', '{{ top10p.6.nome }}', '{{ top10p.7.nome }}',
-        '{{ top10p.8.nome }}', '{{ top10p.9.nome }}'
+      ['EMPRESA', '{{ top10r.0.nome }}', '{{ top10r.1.nome }}', '{{ top10r.2.nome }}', '{{ top10r.3.nome }}',
+        '{{ top10r.4.nome }}', '{{ top10r.5.nome }}', '{{ top10r.6.nome }}', '{{ top10r.7.nome }}',
+        '{{ top10r.8.nome }}', '{{ top10r.9.nome }}'
       ],
-      ['NOTA', Number('{{ top10p.0.nota }}'), Number('{{ top10p.1.nota }}'), Number('{{ top10p.2.nota }}'), Number(
-          '{{ top10p.3.nota }}'),
-        Number('{{ top10p.4.nota }}'), Number('{{ top10p.5.nota }}'), Number('{{ top10p.6.nota }}'), Number(
-          '{{ top10p.7.nota }}'),
-        Number('{{ top10p.8.nota }}'), Number('{{ top10p.9.nota }}')
+      ['COMENTARIOS', Number('{{ top10r.0.numReclamacoes }}'), Number('{{ top10r.1.numReclamacoes }}'), Number('{{ top10r.2.numReclamacoes }}'), Number(
+          '{{ top10r.3.numReclamacoes }}'),
+        Number('{{ top10r.4.numReclamacoes }}'), Number('{{ top10r.5.numReclamacoes }}'), Number('{{ top10r.6.numReclamacoes }}'), Number(
+          '{{ top10r.7.numReclamacoes }}'),
+        Number('{{ top10r.8.numReclamacoes }}'), Number('{{ top10r.9.numReclamacoes }}')
       ]
     ]);
 
     var options = {
-      title: 'As 10 Empresas Pior-Avaliadas',
+      title: 'As 10 Empresas Mais Comentadas',
       vAxis: {
-        title: 'Nota'
+        title: 'Comentários'
       },
       hAxis: {
         title: 'Empresas'
@@ -188,45 +188,91 @@
 
 {% block content %}
 
-<div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-5">
-    <img src="{% static "/imgs/25aad6fb-e198-4657-ac18-60b8cd1342e6_200x200.png" %}" style="width: 70%; "
-      class="card-img-top" alt="">
+
+<body class="bg-light">
+  <div class="container">
+    <div class="py-5 text-center">
+      <img src="{% static "/imgs/25aad6fb-e198-4657-ac18-60b8cd1342e6_200x200.png" %}" style="width: 30%; "
+        class="card-img-top" alt="">
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Filtros de Area</span>
+        </h4>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <form action="{% url 'dadosPesquisa' %}" method="get">
+              <div class="form-group">
+                <label for="formGroupExampleInput">Empresa</label>
+                <input type="text" class="form-control" name="pesquisa" id="pesquisa"
+                  placeholder="Digite aqui sua Pesquisa ...">
+              </div>
+              <button type="submit" class="btn btn-secondary btn-lg btn-block">PESQUISAR</button>
+
+            </form>
+            <form action="{% url 'dadosPesquisa' %}" method="get">
+              <div class="card" style="width: auto; margin-top: 1cm;">
+                <div class="card-body">
+
+                  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Área</label>
+                  <select class="custom-select my-1 mr-sm-2" name="pesquisaArea" id="pesquisaArea">
+                    <option selected>Escolha uma Área</option>
+                    {% for a in categorias %}
+                    <option value="{{a}}">{{a}}</option>
+                    {% endfor %}
+                  </select>
+
+                </div>
+              </div>
+              <button type="submit" class="btn btn-secondary btn-lg btn-block">PESQUISAR</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 order-md-1">
+        <div class="card" style="width: max-content;">
+          <div class="card-body">
+            <h2><b>Área:</b>"{{area}}"</h2>
+            <h4><b>Número Empresas:</b>{{ area|length }}</h4>
+            <h4><b>Número de Comentários:</b>{{ totalComentarios }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 1cm;">
+      <div class="col-md-12" style="margin-top: 1cm;">
+        <div class="list-group">
+          <h1><b>Dados da Área</b></h1>
+          <div class="row">
+            <div id="chart_div" style="width: 900px; height: 500px;"></div>
+          </div>
+          <div class="row">
+            <div id="chart_div2" style="width: 900px; height: 500px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">© 2019 Recomende</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
   </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"></script>
+  <script>
+    window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
+  </script>
+  <script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"
+    integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"></script>
+  <script src="form-validation.js"></script>
 
-</div>
-
-<div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-    <h4><i>"{{numEmpresas}} Empresas - {{numComentarios}} Reclamações"</i></h4></div></div>
-
-<div class="row">
-  <!--Div that will hold the pie chart-->
-  <div id="chart_div" style="width: 900px; height: 500px;"></div>
-
-</div>
-
-<div class="row">
-  <div id="chart_div2" style="width: 900px; height: 500px;"></div>
-</div>
-
-<div class="row">
-  <div id="chart_div3" style="width: 900px; height: 500px;"></div>
-</div>
-
-<div class="row">
-  <div id="chart_div4" style="width: 900px; height: 500px;"></div>
-</div>
-
-<div class="row">
-  <div id="chart_div5" style="width: 900px; height: 500px;"></div>
-</div>
-
-</div>
-
-</div>
-
-
+</body>
 {% endblock %}

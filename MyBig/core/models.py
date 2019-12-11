@@ -1,11 +1,13 @@
 from django.db import models
 
-# CRIE AQUI AS FERRAMENTAS. BASTA MUDAR OS DADOS DO OBJETO 
-class Ferramenta:
-    def __init__(self, nome, data_insercao, data_manutencao, data_reposicao, qnt, foto):
-        self.nome = nome
-        self.data_insercao = data_insercao
-        self.data_manutencao = data_manutencao
-        self.data_reposicao = data_reposicao
-        self.qnt = qnt
-        self.foto = foto
+from pymongo import MongoClient
+from pymongo import errors
+
+# Create your models here.
+banco = MongoClient('172.18.0.206', 27017).testetp2
+'''for doc in banco.empresas.find({}):
+    print(doc)'''
+
+class Pesquisa:
+    def __init__(self, text):
+        self.text = text

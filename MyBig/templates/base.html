@@ -11,7 +11,10 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="{% static "/css/bootstrap.min.css" %}">
   <link rel="stylesheet" href="{% static "/css/all.css" %}">
-  <title>ALMOXARIFADO</title>
+  <title>RECOMENDE</title>
+
+  {% block grafics %}
+  {% endblock %}
 
   <style>
     /*
@@ -37,7 +40,7 @@
     body {
       /*background: url(https://hdwallpaper20.com/wp-content/uploads/2017/08/made-it-just-for-YOU-It-s-huge-x1080-Download-it-here-wallpaper-wp2007732.jpg) center center no-repeat fixed;
 */
-      background: rgb(14, 4, 56); center center no-repeat fixed;
+      background: url("{% static "/imgs/jornalBack.jpg" %}") center center no-repeat fixed;
 
       -webkit-background-size: cover;
       -moz-background-size: cover;
@@ -62,14 +65,16 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(250, 93, 2);">
-    
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFF;">
+    <a class="navbar-brand" href="#">
+      <img src="{% static "/imgs/25aad6fb-e198-4657-ac18-60b8cd1342e6_200x200.png" %}" width="50" height="45" alt="">
+    </a>
     <ul class="navbar-nav">
-      <li class="nav-item badge badge-pill badge-primary" style="background-color: rgb(238, 209, 175);">
-        <a class="nav-link" href="/home/">Ferramentas</a>
+      <li class="nav-item badge badge-pill badge-primary" style="background-color: #FFF;">
+        <a class="nav-link" href="/home/">Home</a>
       </li>
-      <li class="nav-item badge badge-pill badge-primary" style="background-color:  rgb(238, 209, 175);">
-        <a class="nav-link" href="/cadastrar/">Cadastrar</a>
+      <li class="nav-item badge badge-pill badge-primary" style="background-color: #FFF;">
+        <a class="nav-link" href="/dados/">Pesquisar</a>
       </li>
     </ul>
   </nav>
@@ -81,7 +86,7 @@
         {% endblock %}
       </div>
     </div>
-    
+
   </div>
 
   <!-- Optional JavaScript -->

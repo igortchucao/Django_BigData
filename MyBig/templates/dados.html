@@ -8,143 +8,106 @@
   <div class="container">
     <div class="py-5 text-center">
       <img src="{% static "/imgs/25aad6fb-e198-4657-ac18-60b8cd1342e6_200x200.png" %}" style="width: 30%; "
-      class="card-img-top" alt="">
+        class="card-img-top" alt="">
     </div>
 
     <div class="row">
       <div class="col-md-4 order-md-2 mb-4">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-muted">#trandtops</span>
+          <span class="text-muted">Filtros de Pesquisa</span>
         </h4>
-        <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">#hashtags</h6>
-              <small class="text-muted">Area</small>
-            </div>
-            <span class="text-muted">999</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">#hashtags</h6>
-              <small class="text-muted">Area</small>
-            </div>
-            <span class="text-muted">999</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">#hashtags</h6>
-              <small class="text-muted">Area</small>
-            </div>
-            <span class="text-muted">999</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between bg-light">
-            <div class="text-success">
-              <h6 class="my-0">#hashtags</h6>
-              <small class="text-muted">Area</small>
-            </div>
-            <span class="text-success">999</span>
-          </li>
-        </ul>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
 
-        <form class="card p-2">
-          <div class="input-group">
-            <input class="form-control" type="text" placeholder="Pesquisar hashtag">
-            <div class="input-group-append">
-              <button class="btn btn-secondary" type="submit">Pesquisar</button>
-            </div>
+            <form action="{% url 'dadosPesquisa' %}" method="get">
+              <div class="form-group">
+                <label for="formGroupExampleInput">Empresa</label>
+                <input type="text" class="form-control" name="pesquisa" id="pesquisa"
+                  placeholder="Digite aqui sua Pesquisa ...">
+              </div>
+              <button type="submit" class="btn btn-secondary btn-lg btn-block">PESQUISAR</button>
+
+            </form>
+            <form action="{% url 'dadosPesquisa' %}" method="get">
+              <div class="card" style="width: auto; margin-top: 1cm;">
+                <div class="card-body">
+
+                  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Área</label>
+                  <select class="custom-select my-1 mr-sm-2" name="pesquisaArea" id="pesquisaArea">
+                    <option selected>Escolha uma Área</option>
+                    {% for a in categorias %}
+                    <option value="{{a}}">{{a}}</option>
+                    {% endfor %}
+                  </select>
+
+                </div>
+              </div>
+              <button type="submit" class="btn btn-secondary btn-lg btn-block">PESQUISAR</button>
+            </form>
+
           </div>
-        </form>
+        </div>
       </div>
       <div class="col-md-8 order-md-1">
-        <h4 class="mb-3">Pesquisar Avançadas e Manipulação de Dados</h4>
-        <form class="needs-validation" novalidate="">
-          <div class="row">
-            <div class="col-md-12 mb-3">
-              <form>
-                <div class="form-group">
-                  <label for="formGroupExampleInput">Pesquisar</label>
-                  <input type="text" class="form-control" id="formGroupExampleInput"
-                    placeholder="Digite aqui sua pesquisa...">
-                </div>
-              </form>
-            </div>
+        <div class="card" style="width: max-content;">
+          <div class="card-body">
+            {% if test.nota > 9 %}
+            <div class="display-1 float-right"><i class="fas fa-smile-beam text-success"></i></div>
 
-          </div>
+            {% elif test.nota > 7 %}
+            <div class="display-1 float-right"><i class="fas fa-smile text-primary"></i></div>
 
-          <div class="mb-3">
-            <form>
-              <div class="form-group">
-                <label for="formControlRange">Sentimento</label>
-                <input type="range" class="form-control-range" id="formControlRange">
-              </div>
-            </form>
-          </div>
+            {% elif test.nota > 5 %}
+            <div class="display-1 float-right"><i class="fas fa-meh text-warning"></i></div>
 
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="country">Tema</label>
-              <select class="custom-select d-block w-100" id="country" required="">
-                <option value="">Escolha...</option>
-                <option>Política</option>
-                <option>Esporte</option>
-              </select>
-              <div class="invalid-feedback">
-                Por Favor, escolha uma área
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="state">Ordem</label>
-              <select class="custom-select d-block w-100" id="state" required="">
-                <option value="">Escolha...</option>
-                <option>Mais Comentada</option>
-                <option>Menos Comentada</option>
-              </select>
-              <div class="invalid-feedback">
-                Por Favor, escolha uma ordem
-              </div>
-            </div>
+            {% elif test.nota > 1 %}
+            <div class="display-1 float-right"><i class="fas fa-frown text-danger"></i></div>
 
-          </div>
-          <hr class="mb-4">
-          <div class="custom-control custom-checkbox">
-            <input class="custom-control-input" id="same-address" type="checkbox">
-            <label class="custom-control-label" for="same-address">Gerar Gráfico</label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input class="custom-control-input" id="save-info" type="checkbox">
-            <label class="custom-control-label" for="save-info">Gerar Relatório</label>
-          </div>
-          <hr class="mb-4">
+            {% elif test.nota > 0 %}
+            <div class="display-1 float-right"><i class="fas fa-poo" style="color: rgb(134, 65, 24);"></i></div>
 
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <form>
-                <div class="form-group">
-                  <label for="exampleFormControlInput1">Email para recebr o Relatório</label>
-                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3 mb-3">
-              <label for="cc-expiration">Nome</label>
-              <input class="form-control" id="cc-expiration" required="" type="text" placeholder="">
-              <div class="invalid-feedback">
-                Digite um Nome
-              </div>
-            </div>
+            {% else %}
+            <div class="display-1 float-right"><i class="fas fa-meh-blank text-secondary"></i></div>
 
+            {% endif %}
+
+            <h1 class="mb-3">{{test.nome}}</h1>
+            {% if test.nota != -1 %}
+            <h3><b>Nota:</b>{{test.nota}}</h3>
+            {% else %}
+            <h3><b>Nota:</b><i>"não há nota"</i></h3>
+            {% endif %}
+
+            <h4><b>Numero de Reclamações:</b>{{test.numReclamacoes}}</h4>
+            <h4><b>Reclamações Respondidas:</b>{{test.numRespondidas}}</h4>
+            <h4><b>Reclamações Não Respondidas:</b>{{test.numNaoRespondidas}}</h4>
+            <h4><b>Tempo de Resposta:</b>{{test.tempoRespostaS}}</h4>
+            <h4><b>Categorias:</b>
+              {% for c in test.categorias %}
+              {{c}},
+              {% endfor %}</h2>
           </div>
-          <hr class="mb-4">
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Pesquisar</button>
-        </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 1cm;">
+      <div class="col-md-12" style="margin-top: 1cm;">
+        <div class="list-group">
+          <h1><b>Comentários</b></h1>
+          {% for c in test.comentarios %}
+          <a href="{{c.link}}" target="_blank" type="button" class="list-group-item list-group-item-action">
+            <h3><b>{{c.titulo}}</b></h3>
+            <h4>{{c.descricao}}</h4>
+            <h7>{{c.status}}</h7>
+          </a>
+          {% endfor %}
+        </div>
       </div>
     </div>
 
     <footer class="my-5 pt-5 text-muted text-center text-small">
-      <p class="mb-1">© 2019 Visinha Velha</p>
+      <p class="mb-1">© 2019 Recomende</p>
       <ul class="list-inline">
         <li class="list-inline-item"><a href="#">Privacy</a></li>
         <li class="list-inline-item"><a href="#">Terms</a></li>
